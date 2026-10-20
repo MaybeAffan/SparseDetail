@@ -1,13 +1,185 @@
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparse-detail-playground</title>
+    <title>SparseDetail</title>
   </head>
+
   <body>
-    <div id="app"></div>
+    <div id="app">
+
+      <!-- Page Header -->
+      <header class="app-header">
+        <div class="brand-lockup">
+          <h1>SparseDetail</h1>
+          <p>Perceptual Texture Streaming Playground</p>
+        </div>
+
+        <div class="header-spacer" aria-hidden="true"></div>
+      </header>
+
+      <!-- Main Workspace -->
+      <main class="workspace-card">
+
+        <!-- Rendering Viewport -->
+        <section class="viewport-panel" aria-label="Material preview">
+          <div class="panel-heading">
+            <span class="eyebrow">Material Preview</span>
+          </div>
+
+          <div class="viewport-stage">
+            <div
+              id="viewport"
+              aria-label="Interactive 3D material preview"
+            ></div>
+
+            <div class="viewport-hint">
+              Drag to orbit camera <span>·</span> Shift + drag to rotate sphere
+            </div>
+          </div>
+        </section>
+
+        <!-- Scene Controls -->
+        <aside class="control-panel" aria-label="Scene controls">
+          <div class="control-header">
+            <h2>Controls</h2>
+          </div>
+
+          <div class="control-scroll">
+
+            <!-- Lighting Controls -->
+            <section class="control-section">
+              <div class="section-heading">
+                <h3>Lighting</h3>
+              </div>
+
+              <div class="control-field">
+                <div class="control-label-row">
+                  <label for="light-intensity">Intensity</label>
+                  <output id="light-intensity-value">2.0</output>
+                </div>
+
+                <input
+                  id="light-intensity"
+                  type="range"
+                  min="0"
+                  max="5"
+                  step="0.1"
+                  value="2"
+                />
+
+                <div class="range-labels">
+                  <span>0</span>
+                  <span>5</span>
+                </div>
+              </div>
+
+              <div class="control-field">
+                <div class="control-label-row">
+                  <span>Orbit</span>
+                  <output id="light-orbit-value">3</output>
+                </div>
+
+                <div
+                  class="orbit-options"
+                  role="group"
+                  aria-label="Light orbit position"
+                >
+                  <button class="orbit-option" type="button" data-orbit="1" aria-pressed="false">1</button>
+                  <button class="orbit-option" type="button" data-orbit="2" aria-pressed="false">2</button>
+                  <button class="orbit-option is-selected" type="button" data-orbit="3" aria-pressed="true">3</button>
+                  <button class="orbit-option" type="button" data-orbit="4" aria-pressed="false">4</button>
+                  <button class="orbit-option" type="button" data-orbit="5" aria-pressed="false">5</button>
+                </div>
+              </div>
+
+              <div class="control-field">
+                <div class="control-label-row">
+                  <label for="orbit-radius">Radius</label>
+                  <output id="orbit-radius-value">3.0</output>
+                </div>
+
+                <input
+                  id="orbit-radius"
+                  type="range"
+                  min="1"
+                  max="6"
+                  step="0.1"
+                  value="3"
+                />
+
+                <div class="range-labels">
+                  <span>Near</span>
+                  <span>Far</span>
+                </div>
+              </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Material Map Controls -->
+            <section class="control-section">
+              <div class="section-heading">
+                <h3>Maps</h3>
+              </div>
+
+              <div class="map-list">
+                <label class="map-toggle" for="map-color">
+                  <span>Colour</span>
+                  <input id="map-color" type="checkbox" checked />
+                </label>
+
+                <label class="map-toggle" for="map-normal">
+                  <span>Normal</span>
+                  <input id="map-normal" type="checkbox" checked />
+                </label>
+
+                <label class="map-toggle" for="map-roughness">
+                  <span>Roughness</span>
+                  <input id="map-roughness" type="checkbox" checked />
+                </label>
+
+                <label class="map-toggle" for="map-ao">
+                  <span>Ambient occlusion</span>
+                  <input id="map-ao" type="checkbox" checked />
+                </label>
+
+                <label class="map-toggle" for="map-displacement">
+                  <span>Displacement</span>
+                  <input id="map-displacement" type="checkbox" checked />
+                </label>
+              </div>
+
+              <div class="control-field displacement-control">
+                <div class="control-label-row">
+                  <label for="displacement-intensity">Displacement strength</label>
+                  <output id="displacement-intensity-value">0.080</output>
+                </div>
+
+                <input
+                  id="displacement-intensity"
+                  type="range"
+                  min="0"
+                  max="0.3"
+                  step="0.005"
+                  value="0.08"
+                />
+
+                <div class="range-labels">
+                  <span>0</span>
+                  <span>0.30</span>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <!-- Application Entry Point -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
